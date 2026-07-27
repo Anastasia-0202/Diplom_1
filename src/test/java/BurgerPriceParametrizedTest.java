@@ -5,10 +5,10 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import praktikum.Bun;
 import praktikum.Burger;
 import praktikum.Ingredient;
-import praktikum.IngredientType;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -17,16 +17,16 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class BurgerTest {
+public class BurgerPriceParametrizedTest {
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                // {bunPrice, fillingPricesList, expectedTotalPrice}
-                {50.0F, List.of(20.0F), 70.0F},
-                {50.0F, List.of(20.0F, 25.0F), 95.0F},
-                {60.0F, List.of(10.0F, 10.0F, 5.0F), 85.0F},
-                {40.0F, List.of(), 40.0F}
+                // bunPrice, fillingPrices, expectedTotalPrice
+                {50.0F, List.of(20.0F), 120.0F},          // 50*2 + 20
+                {50.0F, List.of(20.0F, 25.0F), 145.0F},  // 50*2 + 20 + 25
+                {60.0F, List.of(10.0F, 10.0F, 5.0F), 145.0F}, // 60*2 + 10 + 10 + 5
+                {40.0F, List.of(), 80.0F}                // 40*2
         });
     }
 
@@ -47,6 +47,7 @@ public class BurgerTest {
 
     @Before
     public void setUp() {
+        MockitoAnnotations.openMocks(this);
         Mockito.when(bun.getPrice()).thenReturn(bunPrice);
         burger = new Burger();
         burger.setBuns(bun);
@@ -67,7 +68,7 @@ public class BurgerTest {
         }
 
         assertEquals(
-                "Цена не совпадает с ожидаемой для набора: bun=" + bunPrice + ", fillings=" + fillingPrices,
+                "Цена не совпадает с ожидаемой",
                 expectedTotalPrice,
                 burger.getPrice(),
                 0.01F
