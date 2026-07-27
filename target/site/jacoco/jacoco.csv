@@ -1,0 +1,8 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+untitled,org.example,Main,21,0,2,0,5,0,3,0,2,0
+untitled,praktikum,Bun,0,15,0,0,0,6,0,3,0,3
+untitled,praktikum,IngredientType,0,24,0,0,0,3,0,1,0,1
+untitled,praktikum,Burger,90,43,2,2,12,11,4,5,3,4
+untitled,praktikum,Database,106,0,0,0,15,0,3,0,3,0
+untitled,praktikum,Ingredient,0,21,0,0,0,8,0,4,0,4
+untitled,praktikum,Praktikum,59,0,0,0,14,0,2,0,2,0
